@@ -1,0 +1,25 @@
+--Created a clothing store database
+
+CREATE TABLE stock (id INTEGER PRIMARY KEY, name TEXT, price INTEGER, material TEXT, quantity INTEGER);
+
+INSERT INTO stock VALUES (1, "shirt", 7, "cotton", 22);
+INSERT INTO stock VALUES (2, "skirt", 6, "polyester", 7);
+INSERT INTO stock VALUES (3, "blouse", 12, "silk", 23);
+INSERT INTO stock VALUES (4, "pants", 15, "cotton", 37);
+INSERT INTO stock VALUES (5, "shoes", 20, "leather", 46);
+INSERT INTO stock VALUES (6, "socks", 10, "cotton", 60);
+INSERT INTO stock VALUES (7, "shorts", 6, "cotton", 30);
+INSERT INTO stock VALUES (8, "skorts", 6, "cotton", 20);
+INSERT INTO stock VALUES (9, "polos", 12, "cotton", 25);
+INSERT INTO stock VALUES (10, "boxers", 9, "cotton", 40);
+INSERT INTO stock VALUES (11, "panties", 9, "cotton", 40);
+INSERT INTO stock VALUES (12, "purses", 20, "leather", 50);
+INSERT INTO stock VALUES (13, "necklaces", 15, "silver", 50);
+INSERT INTO stock VALUES (14, "bracelets", 14, "silver", 50);
+INSERT INTO stock VALUES (15, "earrings", 11, "silver", 50);
+
+-display the database order by price
+SELECT * FROM stock ORDER BY price;
+
+-display total of all inventory
+SELECT SUM(price*quantity) FROM stock;
