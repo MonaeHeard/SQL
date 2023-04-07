@@ -1,0 +1,58 @@
+#1 Total, Max, and Average amount of hours walked in space
+SELECT name, MAX(Space_Flight_hr), SUM(Space_Flight_hr), AVG(Space_Flight_hr)  FROM astronauts;
+
+#2 Top 10 Most popular Undergraduate majors for astronauts in descending order 
+SELECT Undergraduate_Major, COUNT(Undergraduate_Major) AS Undergrad_Amount FROM astronauts GROUP BY Undergraduate_Major ORDER BY Undergrad_Amount DESC LIMIT 10;
+
+#3 Top 10 Most popular Graduate majors for astronauts in descending order
+SELECT Graduate_Major, COUNT(Graduate_Major) AS Grad_Amount FROM astronauts GROUP BY Graduate_Major ORDER BY Grad_Amount DESC LIMIT 10;
+
+#4 Max and average amount of people in a group sent to space 
+SELECT MAX(GroupNum), ROUND(AVG(GroupNum)) AS AVG_GroupNum FROM astronauts;
+
+#5 first and lasts year astronauts went to space
+SELECT MAX(year), MIN(year) from astronauts;
+
+#6 Top 10 Most popular Alma MAters for astronauts in descending order
+SELECT Alma_Mater, COUNT(Alma_Mater) AS Alma_Mater_Amount FROM astronauts GROUP BY Alma_Mater ORDER BY Alma_Mater_Amount DESC LIMIT 10;
+
+#7 Amount of astronauts that were in the military
+SELECT COUNT(Military_Rank) FROM astronauts;
+
+#8 astronaut with the maximum space walks and space walk hours
+SELECT name, MAX(Space_Walks) AND MAX(Space_Walks_hr) FROM astronauts;
+
+#9 amount of women that have been astronauts
+SELECT COUNT(*) AS Amount,
+CASE
+WHEN Gender ="Female" THEN "Women"
+ELSE "men"
+END AS Gender_Count
+FROM astronauts
+GROUP BY Gender_Count;
+
+#10 status amount for astronauts
+SELECT COUNT(*) AS Amount,
+CASE
+WHEN Status ="Active" THEN "Active"
+WHEN Status ="Retired" THEN "Retired"
+ELSE "Deceased"
+END Status_Count
+FROM astronauts
+GROUP BY Status_Count;
+
+#11 average amount of hours walked in space
+SELECT AVG(Space_Walks_hr)  FROM astronauts;
+
+#12 number of astronauts that have above, below, and average hours walked in space
+SELECT COUNT(*),
+CASE
+WHEN Space_Walks_hr >7 THEN "Above_Average"
+WHEN Space_Walks_hr =7 THEN "Average"
+ELSE "Below_Average"
+END Walks_hr_Count
+FROM astronauts
+GROUP BY Walks_hr_Count;
+
+#13 woman who walked in space or had a space flight
+SELECT Name, Gender ='Female' AND Space_Walks OR Gender ='Female' AND Space_FLights FROM astronauts GROUP BY Gender HAVING Gender ='Female';
